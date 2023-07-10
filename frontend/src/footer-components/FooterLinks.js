@@ -2,7 +2,7 @@ const FooterLinks = ()=> {
 
     return(
         <ul>
-            
+
         </ul>
       
     )
