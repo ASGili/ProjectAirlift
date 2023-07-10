@@ -1,12 +1,10 @@
 import './App.css';
-import { Html5QrcodeScanner } from 'html5-qrcode';
-import Header from "./header-components/Header"
-import Footer from "./footer-components/Footer"
+import Header from "./HeaderComponents/Header"
+import Footer from "./FooterComponents/Footer"
 import Home from './containers/Home';
 import ErrorPage from './containers/ErrorPage';
+import BookPage from './containers/BookPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
-
 function App() {
   
 
@@ -20,6 +18,7 @@ function App() {
         <Route path ="/*" element= <ErrorPage /> />
         <Route path ="/" element= <Home/> />
         <Route path ="/home" element= <Home/> />
+        <Route path ="/book" element= <BookPage/> />
       </Routes>
     </Router>
     <Footer/>
