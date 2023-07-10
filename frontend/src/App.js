@@ -15,10 +15,10 @@ function App() {
     <Header/>
     <Router>
       <Routes>
-        <Route path ="/*" element= <ErrorPage /> />
+        <Route path ="*" element= <ErrorPage /> />
         <Route path ="/" element= <Home/> />
         <Route path ="/home" element= <Home/> />
-        <Route path ="/book" element= <BookPage/> />
+        <Route path ="/book/:isbn" element= <BookPage/> />
       </Routes>
     </Router>
     <Footer/>

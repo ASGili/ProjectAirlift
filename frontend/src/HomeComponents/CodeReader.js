@@ -1,18 +1,16 @@
-import { Html5QrcodeScanner } from "html5-qrcode";
-import { useEffect, useState } from "react";
+import { Container } from "@mui/material";
 
 const CodeReader = ({barcode})=> {
 
 
-    
 
     return(
-        <>        
-            <div id='qr-reader' style={{width: 50 + 'vw'}}/>
+        <Container>        
+            <div id='qr-reader' style={{width: 75 + 'vw'}}/>
             <div id='book-details'>
                 {barcode}
             </div>
-        </>
+        </Container>
 
     )
 }

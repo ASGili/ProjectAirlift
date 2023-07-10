@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
+
 const BookPage = ()=>{
 
+    const {isbn} = useParams()
     return(
         <>
-            <div></div>
+            <h2>ISBN: {isbn}</h2>
         </>
     )
 }
