@@ -24,8 +24,7 @@ class AirliftApplicationTests {
 
 	@Test
 	public void canFindBook(){
-		Book foundBook = bookRepo.findBookByIsbn("9780387790534");
-		System.out.println(foundBook);
-
+		Book foundBook = bookRepo.findBookById("64ad2df0573ec0459564ca30");
+		System.out.println(foundBook.getTitle());
 	}
 }
