@@ -6,10 +6,7 @@ const CodeReader = ({barcode})=> {
 
     return(
         <Container>        
-            <div id='qr-reader' style={{width: 75 + 'vw'}}/>
-            <div id='book-details'>
-                {barcode}
-            </div>
+            <div id='qr-reader' style={{width: 70 + 'vw'}}/>
         </Container>
 
     )

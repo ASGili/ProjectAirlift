@@ -1,13 +1,13 @@
-package com.capstone.ProjectAirlift;
+package com.capstone.airlift;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectAirliftApplication {
+public class AirliftApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectAirliftApplication.class, args);
+		SpringApplication.run(AirliftApplication.class, args);
 	}
 
 }

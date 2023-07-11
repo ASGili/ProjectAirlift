@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import BookDetails from "../HomeComponents/BookDetails";
@@ -8,7 +8,7 @@ import WelcomeLanding from "../HomeComponents/WelcomeLanding";
 
 const Home = ()=>{
 
-    const [barcode, setBarcode] = useState("")
+    const [barcode, setBarcode] = useState(0)
     const [fetchedBook, setBook] = useState({})
     
     useEffect(()=> {  function onScanSuccess(decodedText, decodedResult) {
@@ -18,20 +18,23 @@ const Home = ()=>{
         html5QrcodeScanner.render(onScanSuccess);},[])
 
     useEffect(()=>{
-        console.log("barcode changed")
         fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode)
         .then(res => res.json()).then(res=> setBook(res));
     },[barcode])
 
+    const handleAddBook = ()=>{
+
+        return null
+    }
+
     return (
-        <>
-        <Stack spacing={3} sx={{minWidth: 10, mx: 'auto', width: 900,m:7}}>
+        <Stack spacing={2} sx={{py:5,minWidth: 10, mr: 'auto', ml:10, width: 800}}>
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />
-            <BookDetails isbn={barcode} fetchedBook={fetchedBook}/>
+            <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook}/>
         </Stack>
-        </>
+
     )
 }
 
