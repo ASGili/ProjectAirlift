@@ -14,9 +14,6 @@ public class Book {
     private String apiLink;
     private ArrayList<Comment> comments;
 
-    public Book() {
-    }
-
     public Book(String title, String isbn, String apiLink) {
         this.title = title;
         this.isbn = isbn;

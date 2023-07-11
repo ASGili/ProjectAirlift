@@ -7,6 +7,7 @@ import com.capstone.airlift.repo.CommentRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @SpringBootTest
 class AirliftApplicationTests {
@@ -35,11 +36,11 @@ class AirliftApplicationTests {
 
 	@Test
 	public void canAddComment(){
-		Book foundBook = bookRepo.findBookById("64ad584ad0ce03587b6bf2cd");
+		Book foundBook = bookRepo.findBookById("64ad64d17687734ec1123245");
 		Comment comment = new Comment("This is another comment","01/01/2000",foundBook);
 		foundBook.getComments().add(comment);
 		bookRepo.save(foundBook);
-		commentRepo.save(comment);
+		commentRepo.save(comment);}
 
 	}
-}
+
