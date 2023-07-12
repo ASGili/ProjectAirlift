@@ -1,6 +1,7 @@
 import { QRCode } from "@jackybaby/react-custom-qrcode";
 import { Container, Stack } from "@mui/material";
-const BookDetails = ({isbn, fetchedBook, handleAddBook})=> {
+import AddBookButton from "./AddBookButton";
+const BookDetails = ({isbn, fetchedBook, handleAddBook, dbResponseBook})=> {
 
     return(
         <Container>
@@ -8,13 +9,15 @@ const BookDetails = ({isbn, fetchedBook, handleAddBook})=> {
 
         <p><a href={`http://localhost:3000/book/` + isbn}>Link to book page.</a></p>
         {fetchedBook.totalItems === 1 ? 
+
         <Stack direction="row" spacing={2}>
         <img src={fetchedBook.items[0].volumeInfo.imageLinks.thumbnail} /> 
-        <button onClick={handleAddBook}>Add Book To Library.</button>
+        <AddBookButton handleAddBook={handleAddBook} />
         </Stack>
+
         :  ""} 
        
-        <p>{fetchedBook.totalItems ===1 ? <QRCode value={`http://localhost:8080/books/` + isbn} /> : ""} </p>
+        <p>{dbResponseBook._links ? <QRCode value={dbResponseBook._links.book.href} /> : ""} </p>
         </Container>
 
         

@@ -10,6 +10,7 @@ const Home = ()=>{
 
     const [barcode, setBarcode] = useState(0)
     const [fetchedBook, setBook] = useState({})
+    const [dbResponseBook, setDbResponse] = useState({})
     
     useEffect(()=> {  function onScanSuccess(decodedText, decodedResult) {
         console.log(`Code scanned = ${decodedText}`, decodedResult)
@@ -28,7 +29,7 @@ const Home = ()=>{
         console.log(bookToSend)
         fetch("http://localhost:8080/books",{method: "POST", body: JSON.stringify(bookToSend),  headers: {"Content-Type": "application/json"}})
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setDbResponse(data))
     }
 
     return (
@@ -36,7 +37,7 @@ const Home = ()=>{
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />
-            <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook}/>
+            <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
         </Stack>
 
     )
