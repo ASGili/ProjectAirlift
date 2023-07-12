@@ -14,7 +14,7 @@ const BookDetails = ({isbn, fetchedBook, handleAddBook})=> {
         </Stack>
         :  ""} 
        
-        <p>{fetchedBook.totalItems ===1 ? <QRCode value={`http://localhost:3000/book/` + isbn} /> : ""} </p>
+        <p>{fetchedBook.totalItems ===1 ? <QRCode value={`http://localhost:8080/books/` + isbn} /> : ""} </p>
         </Container>
 
         

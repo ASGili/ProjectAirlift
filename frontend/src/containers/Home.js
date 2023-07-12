@@ -19,12 +19,16 @@ const Home = ()=>{
 
     useEffect(()=>{
         fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode)
-        .then(res => res.json()).then(res=> setBook(res));
+        .then(res => res.json())
+        .then(res=> setBook(res));
     },[barcode])
 
     const handleAddBook = ()=>{
-
-        return null
+        let bookToSend = {"title": fetchedBook.items[0].volumeInfo.title,"isbn":barcode,"apiLink":fetchedBook.items[0].selfLink}
+        console.log(bookToSend)
+        fetch("http://localhost:8080/books",{method: "POST", body: JSON.stringify(bookToSend),  headers: {"Content-Type": "application/json"}})
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
     return (
