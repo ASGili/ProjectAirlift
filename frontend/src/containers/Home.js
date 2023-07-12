@@ -26,7 +26,6 @@ const Home = ()=>{
 
     const handleAddBook = ()=>{
         let bookToSend = {"title": fetchedBook.items[0].volumeInfo.title,"isbn":barcode,"apiLink":fetchedBook.items[0].selfLink}
-        console.log(bookToSend)
         fetch("http://localhost:8080/books",{method: "POST", body: JSON.stringify(bookToSend),  headers: {"Content-Type": "application/json"}})
         .then(res => res.json())
         .then(data => setDbResponse(data))

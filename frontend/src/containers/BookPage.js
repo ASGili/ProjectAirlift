@@ -21,11 +21,15 @@ const BookPage = ()=>{
     useEffect(()=>{     
         fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + fetchedBook.isbn)
             .then(res => res.json())
-            .then(data => console.log(data.items))
+            // .then(data => console.log(data.items))
     },[fetchedBook])
 
     const handleAddComment = ()=>{
-        return null
+        let commentToSend = {"content":"test","date":Date.now(),"book":{"id":DbBookId}}
+        console.log(commentToSend)
+        fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{method: "POST", body: JSON.stringify(commentToSend),  headers: {"Content-Type": "application/json"}})
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
     return(

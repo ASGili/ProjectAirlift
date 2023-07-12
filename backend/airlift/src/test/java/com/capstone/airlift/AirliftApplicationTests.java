@@ -29,17 +29,10 @@ class AirliftApplicationTests {
 	}
 
 	@Test
-	public void canFindBook(){
-		Book foundBook = bookRepo.findBookById("64ad2df0573ec0459564ca30");
-		System.out.println(foundBook.getTitle());
-	}
-
-	@Test
 	public void canAddComment(){
-		Book foundBook = bookRepo.findBookById("64ad64d17687734ec1123245");
-		Comment comment = new Comment("This is another comment","01/01/2000",foundBook);
-		foundBook.getComments().add(comment);
-		bookRepo.save(foundBook);
+		Book book = new Book("Introductory Statistics with R","9780387790534","https://www.googleapis.com/books/v1/volumes?q=isbn:9780387790534");
+		bookRepo.save(book);
+		Comment comment = new Comment("This is another comment","01/01/2000");
 		commentRepo.save(comment);}
 
 	}

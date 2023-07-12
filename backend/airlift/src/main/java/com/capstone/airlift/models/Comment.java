@@ -9,13 +9,16 @@ public class Comment {
     private String id;
     private String content;
     private String date;
-    @DBRef
-    private Book book;
+//    private Book book;
 
-    public Comment(String content, String date, Book book) {
+
+    public Comment() {
+    }
+
+    public Comment(String content, String date) {
         this.content = content;
         this.date = date;
-        this.book = book;
+//        this.book = book;
     }
 
     public String getId() {
@@ -42,11 +45,11 @@ public class Comment {
         this.date = date;
     }
 
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
+//    public Book getBook() {
+//        return book;
+//    }
+//
+//    public void setBook(Book book) {
+//        this.book = book;
+//    }
 }

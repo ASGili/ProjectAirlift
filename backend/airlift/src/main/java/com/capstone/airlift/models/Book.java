@@ -1,7 +1,8 @@
 package com.capstone.airlift.models;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,11 @@ public class Book {
     private String title;
     private String isbn;
     private String apiLink;
+    @DocumentReference
     private ArrayList<Comment> comments;
+
+    public Book() {
+    }
 
     public Book(String title, String isbn, String apiLink) {
         this.title = title;
@@ -60,4 +65,6 @@ public class Book {
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
+
+
 }
