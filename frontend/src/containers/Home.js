@@ -33,7 +33,7 @@ const Home = ()=>{
     }
 
     return (
-        <Stack spacing={2} sx={{py:5,minWidth: 10, mr: 'auto', ml:10, width: 800}}>
+        <Stack spacing={3} sx={{py:5,minWidth: 10, mr: 'auto', ml:10, width: 800}}>
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />

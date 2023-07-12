@@ -1,4 +1,8 @@
-const BookComments = ()=>{
+const BookComments = ({fetchedBook})=>{
+
+    let bookComments
+
+
     return (
         null
     )

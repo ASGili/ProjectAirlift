@@ -18,7 +18,7 @@ function App() {
         <Route path ="*" element= <ErrorPage /> />
         <Route path ="/" element= <Home/> />
         <Route path ="/home" element= <Home/> />
-        <Route path ="/book/:isbn" element= <BookPage/> />
+        <Route path ="/books/:DbBookId" element= <BookPage/> />
       </Routes>
     </Router>
     <Footer/>
