@@ -1,4 +1,4 @@
-import { Container, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import BookDetails from "../HomeComponents/BookDetails";
@@ -19,7 +19,7 @@ const Home = ()=>{
         html5QrcodeScanner.render(onScanSuccess);},[])
 
     useEffect(()=>{
-        fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode)
+        fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
         .then(res => res.json())
         .then(res=> setBook(res));
     },[barcode])

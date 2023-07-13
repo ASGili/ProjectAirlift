@@ -1,10 +1,17 @@
-const BookComments = ({fetchedBook})=>{
+import Comment from "./Comment"
 
-    let bookComments
+const BookComments = ({commentData})=>{
 
+    let bookComments =commentData.map((comment) => 
+    <Comment 
+    key={comment.date} 
+    commentText={comment.content}
+    commentDate={comment.date}    
+    />)
 
+    
     return (
-        null
+        bookComments
     )
 }
 

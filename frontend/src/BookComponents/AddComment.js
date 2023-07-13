@@ -1,13 +1,15 @@
 import { Stack } from "@mui/material"
-import { useState } from "react"
 
-const AddComment = ({handleAddComment})=>{
+const AddComment = ({handleAddComment, setCommentText, content})=>{
 
-
+    const handleCommentText = (event)=>{
+        setCommentText(event.target.value);
+        console.log(event.target.value)
+    }
 
     return(
         <Stack>
-        <input type="text"></input>
+        <input value={content} onChange={handleCommentText}type="text"/>
         <button onClick={handleAddComment}>Add Comment</button>
         </Stack>
     )
