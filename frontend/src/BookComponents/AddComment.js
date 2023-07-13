@@ -1,16 +1,21 @@
 import { Stack } from "@mui/material"
 
-const AddComment = ({handleAddComment, setCommentText, content})=>{
+const AddComment = ({handleCommentAdd, setCommentText, content})=>{
 
     const handleCommentText = (event)=>{
         setCommentText(event.target.value);
-        console.log(event.target.value)
+    }
+
+    const handleEnter = (event)=>{
+        if (event.keyCode === 13) {
+            document.getElementById("addCommentButton").click()
+        }
     }
 
     return(
         <Stack>
-        <input value={content} onChange={handleCommentText}type="text"/>
-        <button onClick={handleAddComment}>Add Comment</button>
+        <input value={content} onKeyUpCapture={handleEnter} onChange={handleCommentText}type="text"/>
+        <button id="addCommentButton" onClick={handleCommentAdd}>Add Comment</button>
         </Stack>
     )
 }

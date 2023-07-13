@@ -1,6 +1,6 @@
 package com.capstone.airlift.models;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.bson.types.Binary;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("comments")
@@ -9,7 +9,7 @@ public class Comment {
     private String id;
     private String content;
     private String date;
-//    private Book book;
+    private Binary photo;
 
 
     public Comment() {
@@ -18,7 +18,6 @@ public class Comment {
     public Comment(String content, String date) {
         this.content = content;
         this.date = date;
-//        this.book = book;
     }
 
     public String getId() {
@@ -45,11 +44,10 @@ public class Comment {
         this.date = date;
     }
 
-//    public Book getBook() {
-//        return book;
-//    }
-//
-//    public void setBook(Book book) {
-//        this.book = book;
-//    }
+    public Binary getPhoto() {
+        return photo;
+    }
+    public void setPhoto(Binary photo) {
+        this.photo = photo;
+    }
 }
