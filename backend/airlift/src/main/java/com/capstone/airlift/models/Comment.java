@@ -10,6 +10,7 @@ public class Comment {
     private String content;
     private String date;
     private String photo;
+    private String user;
 
 
     public Comment() {
@@ -49,5 +50,13 @@ public class Comment {
     }
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

@@ -71,17 +71,10 @@ const BookPage = ()=>{
         }
     }
 
-    const handlePhotoAdd= (event)=>{
-        let id = event.target.id
+    const handlePhotoAdd= ()=>{
         const reader = new FileReader()
         reader.onload = () => {
             setPhoto(reader.result)
-            fetch(commentData[id]._links.comment.href,{
-                method: "PATCH", 
-                body: JSON.stringify({photo}),  
-                headers: {"Content-Type": "application/json"}
-                })
-            
         }
         reader.readAsDataURL(photoFile)
     }
@@ -91,13 +84,25 @@ const BookPage = ()=>{
     }
     
     const handlePhotoToDb = (event)=>{
-        
-  
+        let id = event.target.id
+        fetch(commentData[id]._links.comment.href,{
+            method: "PATCH", 
+            body: JSON.stringify({photo}),  
+            headers: {"Content-Type": "application/json"}
+        })
     }
  
-
-    
-
+    const handleImageDelete= (event)=>{
+        let id = event.target.id
+        if(commentData){
+            fetch(commentData[id]._links.comment.href,{
+                method: "PATCH",  
+                body: JSON.stringify({"photo":null}),  
+                headers: {"Content-Type": "application/json"}
+            })
+            .then(()=> fetchComments())
+        }
+    }
 
     return(
 
@@ -106,7 +111,7 @@ const BookPage = ()=>{
             {apiData.length !== 0 ?<p><img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} /></p>: ""}
             <BookMap />
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
-            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} photo={photo} />
+            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} />
         </Container>
     )
 }

@@ -1,6 +1,9 @@
 import { Stack } from "@mui/material"
 
-const AddComment = ({handleCommentAdd, setCommentText, content})=>{
+const AddComment = ({
+    handleCommentAdd, 
+    setCommentText, 
+    content})=>{
 
     const handleCommentText = (event)=>{
         setCommentText(event.target.value);
