@@ -1,6 +1,6 @@
 import Comment from "./Comment"
 
-const BookComments = ({commentData,handleCommentDelete,handlePhotoAdd,handleFileInput})=>{
+const BookComments = ({commentData,handleCommentDelete,handlePhotoAdd,handleFileInput,photo})=>{
 
     let bookComments =commentData.map((comment,index) => 
     <Comment 
@@ -11,6 +11,7 @@ const BookComments = ({commentData,handleCommentDelete,handlePhotoAdd,handleFile
     handleCommentDelete={handleCommentDelete}
     handlePhotoAdd={handlePhotoAdd}
     handleFileInput={handleFileInput}
+    photo={photo}
     />)
 
     

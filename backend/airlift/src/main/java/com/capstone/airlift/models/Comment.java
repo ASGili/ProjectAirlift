@@ -9,7 +9,7 @@ public class Comment {
     private String id;
     private String content;
     private String date;
-    private Binary photo;
+    private String photo;
 
 
     public Comment() {
@@ -44,10 +44,10 @@ public class Comment {
         this.date = date;
     }
 
-    public Binary getPhoto() {
+    public String getPhoto() {
         return photo;
     }
-    public void setPhoto(Binary photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }

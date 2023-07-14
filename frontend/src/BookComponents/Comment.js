@@ -6,7 +6,8 @@ const Comment = ({
     commentDate,
     handleCommentDelete,
     handlePhotoAdd,
-    handleFileInput
+    handleFileInput,
+    photo
     })=>{
 
     let date = new Date()
@@ -19,10 +20,11 @@ const Comment = ({
             <p>"{commentText}"</p>
             <p>{date.toLocaleTimeString()} {date.toDateString()}</p>
         </Stack>
+        {photo == ""? "": <img width={100} height={100} src={photo}/>}
         <Stack className="select-image" direction="row" alignItems="flex-end" sx={{px:2}}>
             <label style={{padding:"inherit"}} htmlFor="img">Select image: </label>
             <input onInput={handleFileInput} type="file" id="img" name="img" accept="image/*"/>
-            <input onClick={handlePhotoAdd} type="submit" value={"Submit Photo"}/>
+            <input id={id} onClick={handlePhotoAdd} type="submit" value={"Submit Photo"}/>
         </Stack>
         <button id={id} onClick={handleCommentDelete}>Delete Comment</button>
     </Stack>

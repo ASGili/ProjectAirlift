@@ -12,7 +12,8 @@ const BookPage = ()=>{
     const [content, setCommentText] = useState("")
     const [apiData, setApiData] = useState([])
     const [commentData, setCommentData] = useState([])
-    const [photoFile, setPhoto] = useState({})
+    const [photoFile, setPhotoFile] = useState({})
+    const [photo, setPhoto] = useState("")
 
     useEffect(()=>{
         fetch("http://localhost:8080/books/" + DbBookId,{
@@ -33,6 +34,10 @@ const BookPage = ()=>{
 
     useEffect(()=>{
         fetchComments();
+    },[])
+
+    useEffect(()=>{
+
     },[])
 
     const fetchComments = ()=>{
@@ -67,25 +72,29 @@ const BookPage = ()=>{
     }
 
     const handlePhotoAdd= (event)=>{
-        console.log(event)
+        let id = event.target.id
+        const reader = new FileReader()
+        reader.onload = () => {
+            setPhoto(reader.result)
+            fetch(commentData[id]._links.comment.href,{
+                method: "PATCH", 
+                body: JSON.stringify({photo}),  
+                headers: {"Content-Type": "application/json"}
+                })
+            
+        }
+        reader.readAsDataURL(photoFile)
     }
 
     const handleFileInput=(event)=>{
-        setPhoto(event.target.files[0])
-        const reader = new FileReader()
-        reader.onload = () => {
-            console.log(reader.result);
-          };
-        // reader.readAsBinaryString(photoFile)
+        setPhotoFile(event.target.files[0])
     }
-
-   
     
-        // fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{
-        //     method: "POST", 
-        //     body: JSON.stringify(),  
-        //     headers: {"Content-Type": "application/json"}
-        // })
+    const handlePhotoToDb = (event)=>{
+        
+  
+    }
+ 
 
     
 
@@ -97,8 +106,7 @@ const BookPage = ()=>{
             {apiData.length !== 0 ?<p><img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} /></p>: ""}
             <BookMap />
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
-            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} />
-
+            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} photo={photo} />
         </Container>
     )
 }
