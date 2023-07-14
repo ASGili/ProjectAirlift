@@ -1,7 +1,7 @@
 import { QRCode } from "@jackybaby/react-custom-qrcode";
 import { Container, Stack } from "@mui/material";
 import AddBookButton from "./AddBookButton";
-const BookDetails = ({isbn, fetchedBook, handleAddBook, dbResponseBook})=> {
+const BookDetails = ({fetchedBook, handleAddBook, dbResponseBook})=> {
 
     return(
         <Container>
@@ -10,7 +10,7 @@ const BookDetails = ({isbn, fetchedBook, handleAddBook, dbResponseBook})=> {
         <p>Is the book below correct?</p>
         <p>{fetchedBook.items[0].volumeInfo.title} </p>
         <Stack direction="row" spacing={2}>
-        <p> <img src={fetchedBook.items[0].volumeInfo.imageLinks.thumbnail} /> </p>
+        <p> <img alt="book-cover" src={fetchedBook.items[0].volumeInfo.imageLinks.thumbnail} /> </p>
         <AddBookButton handleAddBook={handleAddBook} />
         </Stack>
         </>

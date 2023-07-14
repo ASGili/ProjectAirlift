@@ -15,17 +15,21 @@ const BookPage = ()=>{
     const [photoFile, setPhoto] = useState({})
 
     useEffect(()=>{
-        fetch("http://localhost:8080/books/" + DbBookId)
+        fetch("http://localhost:8080/books/" + DbBookId,{
+            method:"PATCH",
+            body: JSON.stringify({"frontendLink":"http://localhost:3000/books/"}),
+            headers: {"Content-Type": "application/json"}
+        })
         .then(data => data.json())
         .then(data => setBook(data))
     },[DbBookId])
 
-    useEffect(()=>{     
-        if(fetchedBook.isbn){
-        fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + fetchedBook.isbn + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
-            .then(res => res.json())
-            .then(data => setApiData(data.items))}
-    },[fetchedBook])
+    // useEffect(()=>{     
+    //     if(fetchedBook.isbn){
+    //     fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + fetchedBook.isbn + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
+    //         .then(res => res.json())
+    //         .then(data => setApiData(data.items))}
+    // },[fetchedBook])
 
     useEffect(()=>{
         fetchComments();
@@ -90,7 +94,7 @@ const BookPage = ()=>{
 
         <Container>
             <h2>{fetchedBook.title}</h2>
-            {apiData[0] ?<p><img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} /></p>: ""}
+            {apiData.length !== 0 ?<p><img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} /></p>: ""}
             <BookMap />
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} />

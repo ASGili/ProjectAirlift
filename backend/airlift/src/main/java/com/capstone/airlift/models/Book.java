@@ -1,6 +1,5 @@
 package com.capstone.airlift.models;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -12,17 +11,19 @@ public class Book {
     private String id;
     private String title;
     private String isbn;
-    private String apiLink;
+    private String googleApiLink;
+    private String frontendLink;
     @DocumentReference
     private ArrayList<Comment> comments;
 
     public Book() {
     }
 
-    public Book(String title, String isbn, String apiLink) {
+    public Book(String title, String isbn, String googleApiLink, String frontendLink) {
         this.title = title;
         this.isbn = isbn;
-        this.apiLink = apiLink;
+        this.googleApiLink = googleApiLink;
+        this.frontendLink = frontendLink;
         this.comments = new ArrayList<>();
     }
 
@@ -50,12 +51,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getApiLink() {
-        return apiLink;
+    public String getGoogleApiLink() {
+        return googleApiLink;
     }
 
-    public void setApiLink(String apiLink) {
-        this.apiLink = apiLink;
+    public void setGoogleApiLink(String googleApiLink) {
+        this.googleApiLink = googleApiLink;
     }
 
     public ArrayList<Comment> getComments() {
@@ -66,5 +67,11 @@ public class Book {
         this.comments = comments;
     }
 
+    public String getFrontendLink() {
+        return frontendLink;
+    }
 
+    public void setFrontendLink(String frontendLink) {
+        this.frontendLink = frontendLink + this.getId();
+    }
 }
