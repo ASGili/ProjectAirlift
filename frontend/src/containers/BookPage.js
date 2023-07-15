@@ -1,10 +1,10 @@
+import { Container } from "@mui/material";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AddComment from "../BookComponents/AddComment";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
-import { useEffect, useState } from "react";
-import { Card, CardContent, Container, Grid } from "@mui/material";
-import AddComment from "../BookComponents/AddComment";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 const BookPage = ()=>{
     const {DbBookId} = useParams()
