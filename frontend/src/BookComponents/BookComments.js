@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material"
 import Comment from "./Comment"
 
 const BookComments = ({
@@ -26,7 +27,9 @@ const BookComments = ({
 
     
     return (
-        bookComments
+        <Stack spacing={2}>
+        {bookComments}
+        </Stack>
     )
 }
 

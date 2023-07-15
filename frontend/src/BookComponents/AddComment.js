@@ -17,7 +17,7 @@ const AddComment = ({
 
     return(
         <Stack>
-        <input value={content} onKeyUpCapture={handleEnter} onChange={handleCommentText}type="text"/>
+        <input id="add-comment" value={content} onKeyUpCapture={handleEnter} onChange={handleCommentText}type="text"/>
         <button id="addCommentButton" onClick={handleCommentAdd}>Add Comment</button>
         </Stack>
     )

@@ -5,11 +5,9 @@ import Home from './containers/Home';
 import ErrorPage from './containers/ErrorPage';
 import BookPage from './containers/BookPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   
-
-
-
   return (
     <div className="App">
     <Header/>

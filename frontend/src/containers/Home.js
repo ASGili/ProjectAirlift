@@ -38,7 +38,6 @@ const Home = ()=>{
             <CodeReader barcode={barcode}  />
             <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
         </Stack>
-
     )
 }
 

@@ -1,9 +1,10 @@
-import { Await, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
 import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import { Card, CardContent, Container, Grid } from "@mui/material";
 import AddComment from "../BookComponents/AddComment";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 const BookPage = ()=>{
     const {DbBookId} = useParams()
@@ -25,19 +26,15 @@ const BookPage = ()=>{
         .then(data => setBook(data))
     },[DbBookId])
 
-    // useEffect(()=>{     
-    //     if(fetchedBook.isbn){
-    //     fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + fetchedBook.isbn + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
-    //         .then(res => res.json())
-    //         .then(data => setApiData(data.items))}
-    // },[fetchedBook])
+    useEffect(()=>{     
+        if(fetchedBook.isbn){
+        fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + fetchedBook.isbn + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
+            .then(res => res.json())
+            .then(data => setApiData(data.items))}
+    },[fetchedBook])
 
     useEffect(()=>{
         fetchComments();
-    },[])
-
-    useEffect(()=>{
-
     },[])
 
     const fetchComments = ()=>{
@@ -71,7 +68,12 @@ const BookPage = ()=>{
         }
     }
 
+    const handleFileInput=(event)=>{
+        setPhotoFile(event.target.files[0])
+    }
+
     const handlePhotoAdd= ()=>{
+    
         const reader = new FileReader()
         reader.onload = () => {
             setPhoto(reader.result)
@@ -79,10 +81,6 @@ const BookPage = ()=>{
         reader.readAsDataURL(photoFile)
     }
 
-    const handleFileInput=(event)=>{
-        setPhotoFile(event.target.files[0])
-    }
-    
     const handlePhotoToDb = (event)=>{
         let id = event.target.id
         fetch(commentData[id]._links.comment.href,{
@@ -90,6 +88,8 @@ const BookPage = ()=>{
             body: JSON.stringify({photo}),  
             headers: {"Content-Type": "application/json"}
         })
+        .then(()=>setPhoto(""))
+        .then(()=> fetchComments())
     }
  
     const handleImageDelete= (event)=>{
@@ -108,8 +108,7 @@ const BookPage = ()=>{
 
         <Container>
             <h2>{fetchedBook.title}</h2>
-            {apiData.length !== 0 ?<p><img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} /></p>: ""}
-            <BookMap />
+            <Grid2 container>{apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}<BookMap/></Grid2>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} />
         </Container>

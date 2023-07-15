@@ -1,6 +1,10 @@
+import { Card, CardContent, Paper } from "@mui/material"
+
 const BookMap = ()=>{
     return (
-        null
+        <CardContent>
+            <Paper><p></p></Paper>
+        </CardContent>
     )
 }
 
