@@ -1,4 +1,4 @@
-import { Container, Grid, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import BookDetails from "../HomeComponents/BookDetails";
@@ -32,12 +32,12 @@ const Home = ()=>{
     }
 
     return (
-        <Container sx={{py:5, width: "auto"}}>
+        <Stack spacing={3} sx={{py:5,minWidth: 10, mr: 'auto', ml:10, width: 800}}>
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />
             <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
-        </Container>
+        </Stack>
     )
 }
 

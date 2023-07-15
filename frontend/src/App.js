@@ -5,14 +5,12 @@ import Home from './containers/Home';
 import ErrorPage from './containers/ErrorPage';
 import BookPage from './containers/BookPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Container, Paper } from '@mui/material';
 
 function App() {
   
   return (
     <div className="App">
-    <Container>
-    <Header />
+    <Header/>
     <Router>
       <Routes>
         <Route path ="*" element= <ErrorPage /> />
@@ -22,7 +20,6 @@ function App() {
       </Routes>
     </Router>
     <Footer/>
-    </Container>
     </div>
   );
 }
