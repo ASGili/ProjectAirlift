@@ -1,10 +1,11 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import Header from "./HeaderComponents/Header"
-import Footer from "./FooterComponents/Footer"
-import Home from './containers/Home';
-import ErrorPage from './containers/ErrorPage';
+import Footer from "./FooterComponents/Footer";
+import Header from "./HeaderComponents/Header";
 import BookPage from './containers/BookPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ErrorPage from './containers/ErrorPage';
+import Home from './containers/Home';
+import LoginPage from './containers/LoginPage';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
         <Route path ="/" element= <Home/> />
         <Route path ="/home" element= <Home/> />
         <Route path ="/books/:DbBookId" element= <BookPage/> />
+        <Route path ="/login" element= <LoginPage/> />
       </Routes>
     </Router>
     <Footer/>
