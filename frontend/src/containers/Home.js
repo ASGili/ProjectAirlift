@@ -5,6 +5,9 @@ import BookDetails from "../HomeComponents/BookDetails";
 import CodeReader from "../HomeComponents/CodeReader";
 import ManualEntry from "../HomeComponents/ManualEntry";
 import WelcomeLanding from "../HomeComponents/WelcomeLanding";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { sizing } from "@mui/system";
 
 const Home = ()=>{
 
@@ -12,6 +15,7 @@ const Home = ()=>{
     const [fetchedBook, setBook] = useState({})
     const [dbResponseBook, setDbResponse] = useState({})
     
+
     useEffect(()=> {  function onScanSuccess(decodedText, decodedResult) {
         console.log(`Code scanned = ${decodedText}`, decodedResult)
         if(decodedText) {setBarcode(decodedText);}}
@@ -31,8 +35,9 @@ const Home = ()=>{
         .then(data => setDbResponse(data))
     }
 
+
     return (
-        <Stack spacing={3} sx={{py:5,minWidth: 10, mr: 'auto', ml:10, width: 800}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', ml:10, width: 800, height:"78vh"}}>
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />

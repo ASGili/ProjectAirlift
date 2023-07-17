@@ -1,15 +1,17 @@
-import { Container } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import HeaderLinks from "./HeaderLinks";
+import HeaderProfile from "./HeaderProfile";
 
-const Header = ()=> {
+const Header = ({currentUser})=> {
 
     return(
-        <Container maxWidth="false" sx={{height: 25}}>
+        <Stack direction="row" justifyContent="space-between" maxWidth="false" sx={{mx:10, height:"10vh"}}>
             <header className="header-main">
                 <h1>Project Airlift</h1>
                 <HeaderLinks/>
             </header>
-        </Container>
+            <HeaderProfile currentUser={currentUser}/>
+        </Stack>
     )
 }
 

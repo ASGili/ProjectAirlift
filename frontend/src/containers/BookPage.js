@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import AddComment from "../BookComponents/AddComment";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const BookPage = ()=>{
+const BookPage = ({currentUser})=>{
     const {DbBookId} = useParams()
 
     const [fetchedBook, setBook] = useState({})
@@ -16,6 +18,7 @@ const BookPage = ()=>{
     const [photoFile, setPhotoFile] = useState({})
     const [photo, setPhoto] = useState("")
     const [previewNumber, setPreviewNumber] = useState("")
+
 
     useEffect(()=>{
         fetch("http://localhost:8080/books/" + DbBookId,{
@@ -46,7 +49,7 @@ const BookPage = ()=>{
 
     const handleCommentAdd = ()=>{
         if(content){
-        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId}}
+        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.email}
         fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{
             method: "POST", 
             body: JSON.stringify(commentToSend),  
@@ -112,7 +115,7 @@ const BookPage = ()=>{
             <h2>{fetchedBook.title}</h2>
             <Grid2 container>{apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}<BookMap/></Grid2>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
-            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber}/>
+            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
         </Container>
     )
 }

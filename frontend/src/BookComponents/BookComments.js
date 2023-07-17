@@ -9,16 +9,15 @@ const BookComments = ({
     handlePhotoToDb,
     handleImageDelete,
     photo,
-    previewNumber
+    previewNumber,
+    currentUser
     })=>{
 
     let bookComments =commentData.map((comment,index) => 
     <Comment 
     key={index} 
     id={index}
-    commentText={comment.content}
-    commentDate={comment.date}    
-    commentImage={comment.photo}
+    comment={comment}
     handleCommentDelete={handleCommentDelete}
     handlePhotoAdd={handlePhotoAdd}
     handleFileInput={handleFileInput}
@@ -26,6 +25,7 @@ const BookComments = ({
     handleImageDelete={handleImageDelete}
     photo={photo}
     previewNumber={previewNumber}
+    currentUser={currentUser}
     />)
 
     

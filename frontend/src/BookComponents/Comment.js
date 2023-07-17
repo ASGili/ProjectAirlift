@@ -3,9 +3,7 @@ import ImageSelect from "./ImageSelect"
 
 const Comment = ({
     id, 
-    commentText,
-    commentDate,
-    commentImage,
+    comment,
     handleCommentDelete,
     handlePhotoAdd,
     handleFileInput,
@@ -16,7 +14,7 @@ const Comment = ({
     })=>{
 
     let date = new Date()
-    date.setTime(commentDate)
+    date.setTime(comment.date)
     
 
     return (
@@ -24,11 +22,11 @@ const Comment = ({
         <Card elevation={12} sx={{width:"100%"}}>
             <CardContent>
             <Stack justifyContent="space-between" sx={{py: 2,px:2}}>
-                <Stack spacing={1}>
-                        <p>"{commentText}"</p>
-                        <p>{date.toLocaleTimeString()} {date.toDateString()}</p>
+                <Stack direction="row" alignItems="center" spacing={1}>
+                        <p>"{comment.content}".</p>
+                        <p>{date.toLocaleTimeString()} {date.toDateString()}. Comment by User: {comment.user}</p>
                 </Stack>
-            <ImageSelect id={id} handleFileInput={handleFileInput} handlePhotoAdd={handlePhotoAdd} handlePhotoToDb={handlePhotoToDb} commentImage={commentImage} photo={photo} previewNumber={previewNumber} />
+            <ImageSelect id={id} handleFileInput={handleFileInput} handlePhotoAdd={handlePhotoAdd} handlePhotoToDb={handlePhotoToDb} commentImage={comment.photo} photo={photo} previewNumber={previewNumber} />
             <button id={id} onClick={handleImageDelete}>Delete Image</button>
             <button id={id} onClick={handleCommentDelete}>Delete Comment</button>
             </Stack>
