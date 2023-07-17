@@ -56,7 +56,7 @@ public class Comment {
         return user;
     }
 
-    public void setUser(String user)4 {
+    public void setUser(String user) {
         this.user = user;
     }
 }
