@@ -8,7 +8,9 @@ const BookComments = ({
     handleFileInput,
     handlePhotoToDb,
     handleImageDelete,
-    photo})=>{
+    photo,
+    previewNumber
+    })=>{
 
     let bookComments =commentData.map((comment,index) => 
     <Comment 
@@ -23,11 +25,12 @@ const BookComments = ({
     handlePhotoToDb={handlePhotoToDb}
     handleImageDelete={handleImageDelete}
     photo={photo}
+    previewNumber={previewNumber}
     />)
 
     
     return (
-        <Stack spacing={2}>
+        <Stack spacing={3} sx={{my:5}}>
         {bookComments}
         </Stack>
     )

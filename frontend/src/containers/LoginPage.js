@@ -52,7 +52,7 @@ const handleClick = ()=>{
         <input onChange={handleEmail} type="text" name="email" id="email"/>
         <label htmlFor="password">Password:</label>
         <input onChange={handlePassword} type="password" name="password" id="password"/>
-        <button onClick={handleClick} type="submit">Login</button>
+        <button onClick={handleClick} type="submit">Register</button>
         </Stack>
 
         <Card>

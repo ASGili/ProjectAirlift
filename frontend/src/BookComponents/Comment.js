@@ -11,7 +11,8 @@ const Comment = ({
     handleFileInput,
     handlePhotoToDb,
     handleImageDelete,
-    photo
+    photo,
+    previewNumber
     })=>{
 
     let date = new Date()
@@ -19,15 +20,15 @@ const Comment = ({
     
 
     return (
-    <Paper elevation={0}>
-        <Card elevation={5}>
+    <Paper elevation={5} sx={{width:"100%"}}>
+        <Card elevation={12} sx={{width:"100%"}}>
             <CardContent>
             <Stack justifyContent="space-between" sx={{py: 2,px:2}}>
                 <Stack spacing={1}>
                         <p>"{commentText}"</p>
                         <p>{date.toLocaleTimeString()} {date.toDateString()}</p>
                 </Stack>
-            <ImageSelect id={id} handleFileInput={handleFileInput} handlePhotoAdd={handlePhotoAdd} handlePhotoToDb={handlePhotoToDb} commentImage={commentImage} photo={photo} />
+            <ImageSelect id={id} handleFileInput={handleFileInput} handlePhotoAdd={handlePhotoAdd} handlePhotoToDb={handlePhotoToDb} commentImage={commentImage} photo={photo} previewNumber={previewNumber} />
             <button id={id} onClick={handleImageDelete}>Delete Image</button>
             <button id={id} onClick={handleCommentDelete}>Delete Comment</button>
             </Stack>

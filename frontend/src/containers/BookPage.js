@@ -15,6 +15,7 @@ const BookPage = ()=>{
     const [commentData, setCommentData] = useState([])
     const [photoFile, setPhotoFile] = useState({})
     const [photo, setPhoto] = useState("")
+    const [previewNumber, setPreviewNumber] = useState("")
 
     useEffect(()=>{
         fetch("http://localhost:8080/books/" + DbBookId,{
@@ -72,8 +73,8 @@ const BookPage = ()=>{
         setPhotoFile(event.target.files[0])
     }
 
-    const handlePhotoAdd= ()=>{
-    
+    const handlePhotoAdd= (event)=>{
+        setPreviewNumber(Number(event.target.id))
         const reader = new FileReader()
         reader.onload = () => {
             setPhoto(reader.result)
@@ -89,6 +90,7 @@ const BookPage = ()=>{
             headers: {"Content-Type": "application/json"}
         })
         .then(()=>setPhoto(""))
+        .then(()=> setPreviewNumber(""))
         .then(()=> fetchComments())
     }
  
@@ -110,7 +112,7 @@ const BookPage = ()=>{
             <h2>{fetchedBook.title}</h2>
             <Grid2 container>{apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}<BookMap/></Grid2>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
-            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} />
+            <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber}/>
         </Container>
     )
 }
