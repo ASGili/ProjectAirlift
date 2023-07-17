@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from 'react';
-import { Card, CardContent, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 const LoginPage = ()=>{
 

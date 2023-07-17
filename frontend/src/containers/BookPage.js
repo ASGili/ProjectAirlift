@@ -1,5 +1,4 @@
 import { Container } from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddComment from "../BookComponents/AddComment";
@@ -115,7 +114,7 @@ const BookPage = ({currentUser})=>{
             {apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
             <Stack sx={{px:4}}>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
-            <BookMap/>
+            <BookMap commentData={commentData} />
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
             </Stack>
         </Container>

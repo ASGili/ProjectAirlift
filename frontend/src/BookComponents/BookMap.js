@@ -1,6 +1,9 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 
-const BookMap = ()=>{
+const BookMap = ({commentData})=>{
+    let markers
+    if (commentData.coordinates){
+    const markers = commentData.map((comment,index)=><Marker key={index} position={[comment.coordinates.long,comment.coordinates.lat]}/>)}
     return (
         <div id="map">
         <MapContainer center={[20, 0]} zoom={2} scrollWheelZoom={false}>
@@ -8,7 +11,7 @@ const BookMap = ()=>{
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <Marker position={[0,0]}/> */}
+        {markers}
         </MapContainer>
         </div>
     )

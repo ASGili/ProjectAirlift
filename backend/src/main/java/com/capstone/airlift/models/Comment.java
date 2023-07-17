@@ -3,6 +3,8 @@ package com.capstone.airlift.models;
 import org.bson.types.Binary;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashMap;
+
 @Document("comments")
 public class Comment {
 
@@ -12,6 +14,7 @@ public class Comment {
     private String photo;
     private String user;
 
+    private HashMap<String,Short> coordinates;
 
     public Comment() {
     }
@@ -58,5 +61,13 @@ public class Comment {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public HashMap<String, Short> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(HashMap<String, Short> coordinates) {
+        this.coordinates = coordinates;
     }
 }

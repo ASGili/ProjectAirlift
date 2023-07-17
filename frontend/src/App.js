@@ -24,11 +24,10 @@ function App() {
     };
   
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
+    const auth = getAuth(app);
 
   onAuthStateChanged(auth, (user) => {
   if (user) {
-      const uid = user.uid;
       setCurrentUser(user)
   }
   });

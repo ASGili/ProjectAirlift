@@ -17,13 +17,13 @@ const ImageSelect = ({
                 <input id="img" onInput={handleFileInput} type="file" name="img" accept="image/*"/>
                 <input id={id} onClick={handlePhotoAdd} type="submit" value={"See Preview of Image"}/>
             </Stack>
-            {previewNumber !== id ? "": 
+                {previewNumber !== id ? "": 
                 <div>
                     <label>Preview Image</label><br/>
-                    <img id="preview-img" alt="upload-preview"  height={108} width={108} src={photo}/>
+                    <img id="preview-img" alt="upload-preview"  height={108} width={108} src={photo}/><br/>
                     <input id={id} onClick={handlePhotoToDb} type="submit" value={"Save Image"}/>
                 </div>}
-                <CommentImage commentImage={commentImage}/>
+            <CommentImage commentImage={commentImage}/>
         </Stack>    
     )
 }
