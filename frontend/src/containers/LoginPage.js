@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from 'react';
 import { Card, CardContent, Stack } from '@mui/material';
 
@@ -18,9 +17,9 @@ const LoginPage = ()=>{
 
   const [email, setEmail] =useState("")
   const [password, setPassword] =useState("")
+  const [displayName, setDisplayName]= useState("")
 
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
 
@@ -36,6 +35,7 @@ const LoginPage = ()=>{
       .then((userCredential) => {
           const user = userCredential.user;
         })
+        .then(()=>updateProfile(auth.currentUser,{displayName}))
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -57,22 +57,17 @@ const LoginPage = ()=>{
   }
 
     return(
-        <Stack direction={'row'}>
-        <Stack spacing={1} sx={{m:5,p:5, width:300}}>   
-        <label htmlFor="email">Email:</label>
-        <input onChange={handleEmail} type="text" name="email" id="email"/>
-        <label htmlFor="password">Password:</label>
-        <input onChange={handlePassword} type="password" name="password" id="password"/>
-        <button onClick={handleRegister} type="submit">Register</button>
-        <button onClick={handleLogin} type="submit">Login</button>
-        </Stack>
-
-        <Card>
-            <CardContent>
-            <p>Current User:</p>
-            {auth.currentUser == null ? "" :<p>{auth.currentUser.email}</p>}
-            </CardContent>
-        </Card>
+        <Stack direction={'row'} sx={{height:"110vh"}}>
+          <Stack spacing={1} sx={{mx:"10vw",p:"10vw", width:300}}>   
+          <label htmlFor="username">Username:</label>
+          <input onChange={(event)=>setDisplayName(event.target.value)} type="text" name="username" id="username"/>
+          <label htmlFor="email">Email:</label>
+          <input onChange={handleEmail} type="text" name="email" id="email"/>
+          <label htmlFor="password">Password:</label>
+          <input onChange={handlePassword} type="password" name="password" id="password"/>
+          <button onClick={handleRegister} type="submit">Register</button>
+          <button onClick={handleLogin} type="submit">Login</button>
+          </Stack>
         </Stack>)
 }
 

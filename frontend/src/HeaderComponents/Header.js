@@ -5,11 +5,9 @@ import HeaderProfile from "./HeaderProfile";
 const Header = ({currentUser})=> {
 
     return(
-        <Stack direction="row" justifyContent="space-between" maxWidth="false" sx={{mx:10, height:"10vh"}}>
-            <header className="header-main">
-                <h1>Project Airlift</h1>
-                <HeaderLinks/>
-            </header>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" maxWidth="false" sx={{mx:10, height:"10vh"}}>
+            <a href="/"><h1>Project Airlift</h1></a>
+            <HeaderLinks/>
             <HeaderProfile currentUser={currentUser}/>
         </Stack>
     )

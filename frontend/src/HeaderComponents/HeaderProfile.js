@@ -8,7 +8,7 @@ const HeaderProfile= ({currentUser})=>{
 
     return(
 
-        currentUser ? <p>Current User Logged In: {currentUser.email}</p> : null
+        currentUser ? <p>Current User Logged In: {currentUser.displayName}</p> : null
     )
 }
 

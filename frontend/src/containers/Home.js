@@ -5,9 +5,7 @@ import BookDetails from "../HomeComponents/BookDetails";
 import CodeReader from "../HomeComponents/CodeReader";
 import ManualEntry from "../HomeComponents/ManualEntry";
 import WelcomeLanding from "../HomeComponents/WelcomeLanding";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { sizing } from "@mui/system";
+
 
 const Home = ()=>{
 
@@ -37,7 +35,7 @@ const Home = ()=>{
 
 
     return (
-        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', ml:10, width: 800, height:"78vh"}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', ml:10, width: 800, height:"90vh"}}>
             <WelcomeLanding />
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />

@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 import AddComment from "../BookComponents/AddComment";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
-import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Stack } from "@mui/system";
 
 const BookPage = ({currentUser})=>{
     const {DbBookId} = useParams()
@@ -49,7 +48,7 @@ const BookPage = ({currentUser})=>{
 
     const handleCommentAdd = ()=>{
         if(content){
-        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.email}
+        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.displayName}
         fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{
             method: "POST", 
             body: JSON.stringify(commentToSend),  
@@ -113,9 +112,12 @@ const BookPage = ({currentUser})=>{
 
         <Container>
             <h2>{fetchedBook.title}</h2>
-            <Grid2 container>{apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}<BookMap/></Grid2>
+            {apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
+            <Stack sx={{px:4}}>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
+            <BookMap/>
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
+            </Stack>
         </Container>
     )
 }
