@@ -34,6 +34,7 @@ const LoginPage = ()=>{
       createUserWithEmailAndPassword(auth, email,password)
       .then((userCredential) => {
           const user = userCredential.user;
+          document.location.reload();
         })
         .then(()=>updateProfile(auth.currentUser,{displayName}))
         .catch((error) => {
@@ -48,6 +49,7 @@ const LoginPage = ()=>{
     signInWithEmailAndPassword(auth,email,password)
     .then((userCredential) => {
       const user = userCredential.user;
+      document.location.reload();
     })
     .catch((error) => {
       const errorCode = error.code;

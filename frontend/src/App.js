@@ -43,10 +43,10 @@ function App() {
     <Router>
       <Routes>
         <Route path ="*" element= <ErrorPage /> />
-        <Route path ="/" element= <Home currentUser={currentUser} /> />
+        <Route path ="/" element= <LoginPage currentUser={currentUser}/> />
         <Route path ="/home" element= <Home currentUser={currentUser}/> />
         <Route path ="/books/:DbBookId" element= <BookPage currentUser={currentUser}/> />
-        <Route path ="/login" element= <LoginPage currentUser={currentUser}/> />
+
       </Routes>
     </Router>
     <Footer/>

@@ -6,8 +6,8 @@ const HeaderLinks = ({handleLogOut})=> {
 
     return(
         <Stack spacing={3} direction="row" >
-            <Button variant="contained" startIcon={<Home/>} ><a href="/">Home - Add a Book</a></Button>
-            <Button variant="contained" startIcon={<Login/>}> <a href="/login">Log In</a></Button>
+            <Button variant="contained" startIcon={<Home/>} href="/home">Home - Add a Book</Button>
+            <Button variant="contained" startIcon={<Login/>} href="/">Log In</Button>
             <Button variant="contained" endIcon={<Logout/>} onClick={handleLogOut}>Log Out</Button>
         </Stack>
     )
