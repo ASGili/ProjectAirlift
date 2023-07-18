@@ -1,14 +1,13 @@
-import { Container } from "@mui/material"
+import { Stack } from "@mui/system"
 
 const WelcomeLanding = () => {
 
     return (
-        <Container>
+        <Stack sx={{mx:5,mt:11}}>
         <section>
-            <h2>Welcome to Airlift.</h2>
             <p>Scan a book's barcode or enter the ISBN below to get started.</p>
         </section>
-        </Container>
+        </Stack>
     )
 }
 

@@ -1,7 +1,11 @@
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 
 const BookMap = ({commentData})=>{
-    let markers = commentData.map((comment,index)=><Marker key={index} position={[comment.coordinates.lat,comment.coordinates.long]}/>)
+    let markers = commentData.map(
+        (comment,index) => {
+            if (comment.coordinates)
+            {<Marker key={index} position={[comment.coordinates.lat,comment.coordinates.long]}/>
+        } else return null })
 
 
     return (

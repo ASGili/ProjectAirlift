@@ -1,4 +1,3 @@
-import { Avatar } from "@mui/material"
 
 const HeaderProfile= ({currentUser})=>{
 

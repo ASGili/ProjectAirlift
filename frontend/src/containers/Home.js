@@ -1,4 +1,4 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, Stack } from "@mui/material";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import BookDetails from "../HomeComponents/BookDetails";
@@ -46,11 +46,11 @@ const Home = ()=>{
       };
 
     return (
-        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 900,minHeight:"85vh",height:"100%"}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 900,minHeight:"85vh",height:"95vh"}}>
             <WelcomeLanding />
-            <Dialog sx={{bgcolor:"#9696bc"}} open={dialogOpen} onClose={handleDialogClose}>
-            <DialogTitle sx={{bgcolor:"#9696bc"}}>Is the book below correct?</DialogTitle>
-                <DialogContent sx={{bgcolor:"#9696bc"}}>
+            <Dialog sx={{bgcolor:"#4A47A3"}} open={dialogOpen} onClose={handleDialogClose}>
+            <DialogTitle sx={{bgcolor:"#4A47A3"}}>Is the book below correct?</DialogTitle>
+                <DialogContent sx={{bgcolor:"#4A47A3"}}>
                     <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
                 </DialogContent>
             </Dialog>

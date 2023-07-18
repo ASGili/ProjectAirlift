@@ -13,7 +13,6 @@ public class Comment {
     private String date;
     private String photo;
     private String user;
-
     private HashMap<String,Float> coordinates;
 
     public Comment() {

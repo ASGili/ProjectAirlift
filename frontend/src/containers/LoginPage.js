@@ -57,7 +57,7 @@ const LoginPage = ()=>{
   }
 
     return(
-        <Stack direction={'row'} sx={{height:"110vh"}}>
+        <Stack direction={'row'} sx={{mt:10,height:"110vh"}}>
           <Stack spacing={1} sx={{mx:"5vw",p:"5vw", width:300}}>  
           <h3>Register a new account:</h3> 
           <label htmlFor="username">Username:</label>

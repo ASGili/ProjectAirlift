@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddComment from "../BookComponents/AddComment";
@@ -16,18 +15,22 @@ const BookPage = ({currentUser})=>{
     const [photoFile, setPhotoFile] = useState({})
     const [photo, setPhoto] = useState("")
     const [previewNumber, setPreviewNumber] = useState("")
-    const [coordinates, setCoordinates] = useState({})
+    const [coordinates, setCoordinates] = useState(null)
 
 
-    function success(position) {
+    function locSuccess(position) {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
         const location = {long, lat};
         setCoordinates(location);
       }
 
+    function locError(){
+        console.log("Error")
+    }
+
     useEffect(()=>{
-        navigator.geolocation.getCurrentPosition(success)
+        navigator.geolocation.getCurrentPosition(locSuccess,locError)
         fetch("http://localhost:8080/books/" + DbBookId,{
             method:"PATCH",
             body: JSON.stringify({"frontendLink":"http://localhost:3000/books/"}),
@@ -119,15 +122,19 @@ const BookPage = ({currentUser})=>{
 
     return(
 
-        <Container>
+        // <Container sx={{mt:11}}>
+        <Stack sx={{mt:10, mx:10}}>
+            <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
             <h2>{fetchedBook.title}</h2>
-            {apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
+            {apiData.length !== 0 ?<img style={{height:230,width:150}} alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
+            </div>
             <Stack spacing={1} sx={{px:4}}>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
             <BookMap commentData={commentData} />
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
             </Stack>
-        </Container>
+        </Stack>
+        // </Container>
     )
 }
 

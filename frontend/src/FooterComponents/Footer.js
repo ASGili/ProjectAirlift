@@ -1,15 +1,15 @@
-import { Container } from "@mui/material";
 import FooterLinks from "./FooterLinks";
+import { Box } from "@mui/system";
 
 const Footer = ()=> {
 
     return(
-        <Container maxWidth="false" sx={{height: "5vh"}}>
+        <Box maxWidth="false" sx={{height: "5vh",mx:5}}>
             <footer className="footer-main">
                 <h4>Aric Gilinsky 2023</h4>
                 <FooterLinks/>
             </footer>
-        </Container>
+        </Box>
     )
 }
 
