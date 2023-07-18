@@ -122,7 +122,7 @@ const BookPage = ({currentUser})=>{
         <Container>
             <h2>{fetchedBook.title}</h2>
             {apiData.length !== 0 ?<img alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
-            <Stack sx={{px:4}}>
+            <Stack spacing={1} sx={{px:4}}>
             <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
             <BookMap commentData={commentData} />
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>

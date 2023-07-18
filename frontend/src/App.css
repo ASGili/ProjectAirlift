@@ -1,10 +1,10 @@
 .App{
-    font-size: small;
+    font-size: 22;
     background-color: #9696ac;
 }
 
 .leaflet-container {
     height: 75vh;
-    width: 75vw
+    width: auto
 }
 

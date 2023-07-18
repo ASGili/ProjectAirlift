@@ -1,12 +1,13 @@
+import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
 
 const HeaderLinks = ({handleLogOut})=> {
 
     return(
-        <Stack spacing={3} direction="row">
-            <a href="/">Home - Add a Book</a>
-            <a href="/login">Log In</a>
-            <a onClick={handleLogOut}>Log Out</a>
+        <Stack spacing={3} direction="row" >
+            <Button variant="contained" ><a href="/">Home - Add a Book</a></Button>
+            <Button variant="contained"> <a href="/login">Log In</a></Button>
+            <Button variant="outlined" onClick={handleLogOut}>Log Out</Button>
         </Stack>
     )
 }

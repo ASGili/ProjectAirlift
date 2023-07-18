@@ -58,7 +58,8 @@ const LoginPage = ()=>{
 
     return(
         <Stack direction={'row'} sx={{height:"110vh"}}>
-          <Stack spacing={1} sx={{mx:"10vw",p:"10vw", width:300}}>   
+          <Stack spacing={1} sx={{mx:"5vw",p:"5vw", width:300}}>  
+          <h3>Register a new account:</h3> 
           <label htmlFor="username">Username:</label>
           <input onChange={(event)=>setDisplayName(event.target.value)} type="text" name="username" id="username"/>
           <label htmlFor="email">Email:</label>
@@ -66,6 +67,13 @@ const LoginPage = ()=>{
           <label htmlFor="password">Password:</label>
           <input onChange={handlePassword} type="password" name="password" id="password"/>
           <button onClick={handleRegister} type="submit">Register</button>
+          </Stack>
+          <Stack spacing={1} sx={{mx:"5vw",p:"5vw", width:300}}>
+          <h3>Login with an existing account:</h3> 
+          <label htmlFor="email">Email:</label>
+          <input onChange={handleEmail} type="text" name="email" id="email"/>
+          <label htmlFor="password">Password:</label>
+          <input onChange={handlePassword} type="password" name="password" id="password"/>
           <button onClick={handleLogin} type="submit">Login</button>
           </Stack>
         </Stack>)
