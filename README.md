@@ -7,8 +7,7 @@ Requirements:
 
 <u>Clone the project</u>
 - Open a terminal or command prompt.
-- Change to the directory where you want to store the project.
-- Clone the project repository by running the following command:
+- Clone the project repository by running the following command in a target folder:
 
 ```
 git clone git@github.com:ASGili/ProjectAirlift.git
@@ -28,7 +27,7 @@ npm install
 - Navigate to the backend directory:
 
 ```
-cd <path_to_project>/backend
+cd ../backend
 ```
 
 - Compile backend:
@@ -40,10 +39,10 @@ Load into a chosen IDE and compile the backend. The AirliftApplication.java file
 - Navigate to the frontend directory:
 
 ```
-cd <path_to_project>/frontend
+cd ../frontend
 ```
 
-- Run the following command to start the React client:
+- Run the following command to start React frontend:
 
 ```
 npm start
