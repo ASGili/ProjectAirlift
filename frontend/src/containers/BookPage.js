@@ -16,9 +16,18 @@ const BookPage = ({currentUser})=>{
     const [photoFile, setPhotoFile] = useState({})
     const [photo, setPhoto] = useState("")
     const [previewNumber, setPreviewNumber] = useState("")
+    const [coordinates, setCoordinates] = useState({})
 
+
+    function success(position) {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        const location = {long, lat};
+        setCoordinates(location);
+      }
 
     useEffect(()=>{
+        navigator.geolocation.getCurrentPosition(success)
         fetch("http://localhost:8080/books/" + DbBookId,{
             method:"PATCH",
             body: JSON.stringify({"frontendLink":"http://localhost:3000/books/"}),
@@ -47,7 +56,8 @@ const BookPage = ({currentUser})=>{
 
     const handleCommentAdd = ()=>{
         if(content){
-        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.displayName}
+        let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.displayName,coordinates}
+        console.log(commentToSend)
         fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{
             method: "POST", 
             body: JSON.stringify(commentToSend),  

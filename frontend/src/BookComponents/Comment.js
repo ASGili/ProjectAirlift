@@ -16,6 +16,7 @@ const Comment = ({
     let date = new Date()
     date.setTime(comment.date)
     
+  
 
     return (
     <Paper elevation={5} sx={{width:"100%"}}>

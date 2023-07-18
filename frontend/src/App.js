@@ -1,3 +1,6 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from "./FooterComponents/Footer";
@@ -6,9 +9,6 @@ import BookPage from './containers/BookPage';
 import ErrorPage from './containers/ErrorPage';
 import Home from './containers/Home';
 import LoginPage from './containers/LoginPage';
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -31,9 +31,15 @@ function App() {
       setCurrentUser(user)
   }
   });
+
+  const handleLogOut = ()=>{
+    signOut(auth)
+    document.location.reload();
+  }
+
   return (
     <div className="App">
-    <Header currentUser={currentUser} />
+    <Header currentUser={currentUser} handleLogOut={handleLogOut}/>
     <Router>
       <Routes>
         <Route path ="*" element= <ErrorPage /> />

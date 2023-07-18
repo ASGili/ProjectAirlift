@@ -14,7 +14,7 @@ public class Comment {
     private String photo;
     private String user;
 
-    private HashMap<String,Short> coordinates;
+    private HashMap<String,Float> coordinates;
 
     public Comment() {
     }
@@ -63,11 +63,11 @@ public class Comment {
         this.user = user;
     }
 
-    public HashMap<String, Short> getCoordinates() {
+    public HashMap<String, Float> getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(HashMap<String, Short> coordinates) {
+    public void setCoordinates(HashMap<String,Float> coordinates) {
         this.coordinates = coordinates;
     }
 }

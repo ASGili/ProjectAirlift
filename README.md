@@ -11,7 +11,7 @@ Requirements:
 - Clone the project repository by running the following command:
 
 ```
-git clone <repository_url>
+git clone git@github.com:ASGili/ProjectAirlift.git
 ```
 
 <u>Install dependencies from your terminal</u>
@@ -24,14 +24,17 @@ npm install
 ```
 
 
-<u>Start the server and client</u>
+<u>Start the backend and frontend</u>
 - Navigate to the backend directory:
 
 ```
 cd <path_to_project>/backend
 ```
 
-- Run the following command to start the server:
+- Compile backend:
+
+Load into a chosen IDE and compile the backend. The AirliftApplication.java file is the runner for the backend.
+
 
 
 - Navigate to the frontend directory:
@@ -48,5 +51,4 @@ npm start
 
 <u> Accessing the app</u>
 - Open a web browser and go to `http://localhost:3000`.
-- You should see the React app running, connected to the Express server.
-- You can now interact with the app locally.
+- You should see the React app running, connected to the Spring backend.
