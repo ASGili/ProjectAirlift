@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack } from "@mui/material";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import BookDetails from "../HomeComponents/BookDetails";
@@ -12,7 +12,7 @@ const Home = ()=>{
     const [barcode, setBarcode] = useState(0)
     const [fetchedBook, setBook] = useState({})
     const [dbResponseBook, setDbResponse] = useState({})
-    
+    const [dialogOpen, setDialog] = useState(false)
 
     useEffect(()=> {  function onScanSuccess(decodedText, decodedResult) {
         console.log(`Code scanned = ${decodedText}`, decodedResult)
@@ -21,9 +21,10 @@ const Home = ()=>{
         html5QrcodeScanner.render(onScanSuccess);},[])
 
     useEffect(()=>{
+        if(barcode){
         fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
         .then(res => res.json())
-        .then(res=> setBook(res));
+        .then(res=> setBook(res), handleDialogOpen())}
     },[barcode])
 
     const handleAddBook = ()=>{
@@ -33,13 +34,27 @@ const Home = ()=>{
         .then(data => setDbResponse(data))
     }
 
+    const handleDialogOpen = () => {
+        setDialog(true);
+      };
+    
+      const handleDialogClose = () => {
+        setDialog(false);
+        setBarcode("")
+        setDbResponse("")
+      };
 
     return (
-        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', ml:10, width: 800,minHeight:"85vh",height:"100%"}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 800,minHeight:"85vh",height:"100%"}}>
             <WelcomeLanding />
+            <Dialog sx={{bgcolor:"#9696bc"}} open={dialogOpen} onClose={handleDialogClose}>
+            <DialogTitle sx={{bgcolor:"#9696bc"}}>Is the book below correct?</DialogTitle>
+                <DialogContent sx={{bgcolor:"#9696bc"}}>
+                    <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
+                </DialogContent>
+            </Dialog>
             <ManualEntry setBarcode={setBarcode} />
             <CodeReader barcode={barcode}  />
-            <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
         </Stack>
     )
 }
