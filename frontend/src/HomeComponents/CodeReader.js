@@ -6,7 +6,7 @@ const CodeReader = ()=> {
 
     return(
         <Container>        
-            <div id='qr-reader' style={{width: 70 + 'vw'}}/>
+            <div id='qr-reader' style={{width: 75 + 'vw'}}/>
         </Container>
 
     )

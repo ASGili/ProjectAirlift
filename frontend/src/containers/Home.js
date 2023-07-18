@@ -17,10 +17,11 @@ const Home = ()=>{
     useEffect(()=> {  function onScanSuccess(decodedText, decodedResult) {
         console.log(`Code scanned = ${decodedText}`, decodedResult)
         if(decodedText) {setBarcode(decodedText);}}
-        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 5, qrbox: 500 });
+        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 2, qrbox:(document.body.clientWidth/4) });
         html5QrcodeScanner.render(onScanSuccess);},[])
 
     useEffect(()=>{
+        console.log(document.body.clientWidth)
         if(barcode){
         fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + barcode + "&key=AIzaSyDQJW_XlB3cmU-qjmQd0fL9QBoTOdcl1Qo")
         .then(res => res.json())
@@ -45,7 +46,7 @@ const Home = ()=>{
       };
 
     return (
-        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 800,minHeight:"85vh",height:"100%"}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 900,minHeight:"85vh",height:"100%"}}>
             <WelcomeLanding />
             <Dialog sx={{bgcolor:"#9696bc"}} open={dialogOpen} onClose={handleDialogClose}>
             <DialogTitle sx={{bgcolor:"#9696bc"}}>Is the book below correct?</DialogTitle>
