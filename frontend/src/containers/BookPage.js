@@ -72,7 +72,11 @@ const BookPage = ({currentUser})=>{
         .then(()=> fetchComments())
         setCommentText("")
             }
-            else{console.log("You have already left a comment, please delete if you wish to leave another.")}
+            else{
+                alert("You have already left a comment, please delete if you wish to leave another.");
+                setCommentText("")
+
+        }
         }
     }
        

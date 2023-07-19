@@ -19,7 +19,7 @@ const Comment = ({
   
 
     return (
-    <Paper elevation={5} sx={{width:"100%"}}>
+    <Paper id={id} elevation={5} sx={{width:"100%"}}>
         <Card elevation={12} sx={{width:"100%", minHeight:350}}>
             <CardContent>
             <Stack spacing={1} justifyContent="space-between" sx={{py: 2,px:2}}>

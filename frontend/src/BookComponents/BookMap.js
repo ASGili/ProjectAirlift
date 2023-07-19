@@ -6,7 +6,7 @@ const BookMap = ({commentData})=>{
     let markers = markerslist.map((comment,index) => {
         return  <Marker key={index} position={[comment.coordinates.lat,comment.coordinates.long]}>      
                 <Popup>
-                <Typography component="h3">Coordinates for comment {index +1} by {comment.user}</Typography>
+                <Typography component="h3">Coordinates for comment <a href={`#${index}`}>{index +1}</a> by {comment.user}</Typography>
                 <Typography component="p">{(comment.coordinates.lat +", "+ comment.coordinates.long)}</Typography>
                 </Popup>
                 </Marker>
