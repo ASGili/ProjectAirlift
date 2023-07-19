@@ -29,14 +29,14 @@ const LoginPage = ()=>{
   const handlePassword = (event)=>{
       setPassword(event.target.value)
     }
+    
   const handleRegister = ()=>{
-      console.log(auth.currentUser)
       createUserWithEmailAndPassword(auth, email,password)
       .then((userCredential) => {
           const user = userCredential.user;
-          document.location.reload();
         })
         .then(()=>updateProfile(auth.currentUser,{displayName}))
+        .then(()=> document.location.reload())
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -45,7 +45,6 @@ const LoginPage = ()=>{
   }
 
   const handleLogin = ()=>{
-    console.log(auth.currentUser)
     signInWithEmailAndPassword(auth,email,password)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -59,8 +58,8 @@ const LoginPage = ()=>{
   }
 
     return(
-        <Stack spacing={5} direction={'row'} sx={{mx:"4em", pt:15,height:"80vh"}}>
-            <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+        <Stack spacing={20} direction={'row'} sx={{mx:"4em", pt:15,height:"74vh"}}>
+            <Card elevation={4} sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
               <Stack spacing={1} sx={{px:"6vw", width:"24vw"}}>  
               <h3>Register a new account:</h3> 
               <label htmlFor="username">Username:</label>
@@ -72,7 +71,7 @@ const LoginPage = ()=>{
               <button onClick={handleRegister} type="submit">Register</button>
               </Stack>
             </Card>
-            <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+            <Card elevation={4} sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
               <Stack spacing={1} sx={{px:"5vw", width:"24vw"}}>  
               <h3>Login with an existing account:</h3> 
               <label htmlFor="email2">Email:</label>

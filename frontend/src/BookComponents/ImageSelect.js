@@ -11,7 +11,7 @@ const ImageSelect = ({
     previewNumber
 })=>{
     return(
-        <Stack alignItems="center" direction='row' justifyContent="space-between" >  
+        <Stack alignItems="center" direction='row' justifyContent="center" sx={{height:200}}>  
             <Stack className="select-image" direction="column" alignItems="flex-start" sx={{px:1}}>
                 <label style={{padding:"inherit"}} htmlFor="img">Select Image:</label>
                 <input id="img" onInput={handleFileInput} type="file" name="img" accept="image/*"/>
@@ -23,7 +23,6 @@ const ImageSelect = ({
                     <img id="preview-img" alt="upload-preview"  height={108} width={108} src={photo}/><br/>
                     <input id={id} onClick={handlePhotoToDb} type="submit" value={"Save Image"}/>
                 </Stack>}
-            <CommentImage commentImage={commentImage}/>
         </Stack>    
     )
 }

@@ -3,9 +3,9 @@ import { Card, CardContent } from "@mui/material"
 const CommentImage = ({commentImage})=>{
 
     return(
-        <Card sx={{m:2,p:2}}>
+        <Card sx={{px:10}}>
         <CardContent>
-        <img alt="current" id="savedimage" height={300} width={360} src={commentImage} />
+        <img alt="current" id="savedimage" height="auto" width="250vw" src={commentImage} />
         </CardContent>
         </Card>
     )
