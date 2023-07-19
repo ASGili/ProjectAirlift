@@ -46,11 +46,11 @@ const Home = ()=>{
       };
 
     return (
-        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 900,minHeight:"85vh",height:"95vh"}}>
+        <Stack spacing={3} sx={{py:"2.5vh",minWidth: 10, mr: 'auto', width: 900,minHeight:"85vh",height:"85vh"}}>
             <WelcomeLanding />
-            <Dialog sx={{bgcolor:"#4A47A3"}} open={dialogOpen} onClose={handleDialogClose}>
-            <DialogTitle sx={{bgcolor:"#4A47A3"}}>Is the book below correct?</DialogTitle>
-                <DialogContent sx={{bgcolor:"#4A47A3"}}>
+            <Dialog sx={{bgcolor:"#CDF0EA"}} open={dialogOpen} onClose={handleDialogClose}>
+            <DialogTitle sx={{bgcolor:"#CDF0EA", border:"solid 2px white"}}>Is the book below correct?</DialogTitle>
+                <DialogContent sx={{bgcolor:"#FAF4B7"}}>
                     <BookDetails isbn={barcode} fetchedBook={fetchedBook} handleAddBook={handleAddBook} dbResponseBook={dbResponseBook} />
                 </DialogContent>
             </Dialog>

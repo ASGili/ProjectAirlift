@@ -122,8 +122,7 @@ const BookPage = ({currentUser})=>{
 
     return(
 
-        // <Container sx={{mt:11}}>
-        <Stack sx={{mt:10, mx:10}}>
+        <Stack sx={{pt:10, mx:10}}>
             <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
             <h2>{fetchedBook.title}</h2>
             {apiData.length !== 0 ?<img style={{height:230,width:150}} alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
@@ -134,7 +133,6 @@ const BookPage = ({currentUser})=>{
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
             </Stack>
         </Stack>
-        // </Container>
     )
 }
 

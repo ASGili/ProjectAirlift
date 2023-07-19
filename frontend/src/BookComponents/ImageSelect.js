@@ -18,11 +18,11 @@ const ImageSelect = ({
                 <input id={id} onClick={handlePhotoAdd} type="submit" value={"See Preview of Image"}/>
             </Stack>
                 {previewNumber !== id ? "": 
-                <div>
+                <Stack spacing={0} alignItems="center" sx={{}}>
                     <label>Preview Image</label><br/>
                     <img id="preview-img" alt="upload-preview"  height={108} width={108} src={photo}/><br/>
                     <input id={id} onClick={handlePhotoToDb} type="submit" value={"Save Image"}/>
-                </div>}
+                </Stack>}
             <CommentImage commentImage={commentImage}/>
         </Stack>    
     )

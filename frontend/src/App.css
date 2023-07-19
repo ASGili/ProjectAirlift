@@ -1,7 +1,7 @@
 .App{
-    font-size: 22;
-    background-color: #4A47A3;
-    color: white
+    font-size: large;
+    background-color: #CDF0EA;
+    color: #4A47A3
 }
 
 .leaflet-container {

@@ -20,9 +20,9 @@ const Comment = ({
 
     return (
     <Paper elevation={5} sx={{width:"100%"}}>
-        <Card elevation={12} sx={{width:"100%"}}>
+        <Card elevation={12} sx={{width:"100%", minHeight:350}}>
             <CardContent>
-            <Stack justifyContent="space-between" sx={{py: 2,px:2}}>
+            <Stack spacing={1} justifyContent="space-between" sx={{py: 2,px:2}}>
                 <Stack direction="row" alignItems="center" spacing={1}>
                         <p>"{comment.content}".</p>
                         <p>{date.toLocaleTimeString()} {date.toDateString()}. Comment by User: {comment.user}</p>

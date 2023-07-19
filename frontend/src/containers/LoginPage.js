@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from 'react';
-import { Stack } from '@mui/material';
+import { Card, Stack } from '@mui/material';
 
 const LoginPage = ()=>{
 
@@ -59,8 +59,9 @@ const LoginPage = ()=>{
   }
 
     return(
-        <Stack direction={'row'} sx={{mt:10,height:"110vh"}}>
-          <Stack spacing={1} sx={{mx:"5vw",p:"5vw", width:300}}>  
+        <Stack spacing={5} direction={'row'} sx={{mx:"4em", pt:15,height:"80vh"}}>
+          <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+          <Stack spacing={1} sx={{p:"5vw", width:"30vw"}}>  
           <h3>Register a new account:</h3> 
           <label htmlFor="username">Username:</label>
           <input onChange={(event)=>setDisplayName(event.target.value)} type="text" name="username" id="username"/>
@@ -70,14 +71,17 @@ const LoginPage = ()=>{
           <input onChange={handlePassword} type="password" name="password" id="password"/>
           <button onClick={handleRegister} type="submit">Register</button>
           </Stack>
-          <Stack spacing={1} sx={{mx:"5vw",p:"5vw", width:300}}>
+          </Card>
+          <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+          <Stack spacing={1} sx={{p:"5vw", width:"30vw"}}>  
           <h3>Login with an existing account:</h3> 
-          <label htmlFor="email">Email:</label>
-          <input onChange={handleEmail} type="text" name="email" id="email"/>
-          <label htmlFor="password">Password:</label>
-          <input onChange={handlePassword} type="password" name="password" id="password"/>
+          <label htmlFor="email2">Email:</label>
+          <input onChange={handleEmail} type="text" name="email2" id="email2"/>
+          <label htmlFor="password2">Password:</label>
+          <input onChange={handlePassword} type="password2" name="password2" id="password2"/>
           <button onClick={handleLogin} type="submit">Login</button>
           </Stack>
+          </Card>  
         </Stack>)
 }
 
