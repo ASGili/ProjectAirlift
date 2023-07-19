@@ -1,10 +1,10 @@
+import { Skeleton } from "@mui/material";
+import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddComment from "../BookComponents/AddComment";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
-import { Stack } from "@mui/system";
-import { Skeleton } from "@mui/material";
 
 const BookPage = ({currentUser})=>{
     const {DbBookId} = useParams()
@@ -60,6 +60,7 @@ const BookPage = ({currentUser})=>{
 
     const handleCommentAdd = ()=>{
         if(content){
+            if(commentData.filter((comment)=>{return comment.user == currentUser.displayName}).length == 0){
         let commentToSend = {content,"date":Date.now(),"book":{"id":DbBookId},"user":currentUser.displayName,coordinates}
         console.log(commentToSend)
         fetch("http://localhost:8080/books/" +DbBookId+ "/comments/",{
@@ -70,8 +71,11 @@ const BookPage = ({currentUser})=>{
         .then(res => res.json())
         .then(()=> fetchComments())
         setCommentText("")
+            }
+            else{console.log("You have already left a comment, please delete if you wish to leave another.")}
         }
     }
+       
 
     const handleCommentDelete= (event)=>{
         let id = event.target.id
@@ -120,6 +124,7 @@ const BookPage = ({currentUser})=>{
             .then(()=> fetchComments())
         }
     }
+
 
     return(
 
