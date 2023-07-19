@@ -4,6 +4,7 @@ import AddComment from "../BookComponents/AddComment";
 import BookComments from "../BookComponents/BookComments";
 import BookMap from "../BookComponents/BookMap";
 import { Stack } from "@mui/system";
+import { Skeleton } from "@mui/material";
 
 const BookPage = ({currentUser})=>{
     const {DbBookId} = useParams()
@@ -125,10 +126,12 @@ const BookPage = ({currentUser})=>{
         <Stack sx={{pt:10, mx:10}}>
             <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
             <h2>{fetchedBook.title}</h2>
-            {apiData.length !== 0 ?<img style={{height:230,width:150}} alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />: ""}
+            {apiData.length !== 0 
+            ? <img style={{width:150,height:230}} alt="front-cover" src={apiData[0].volumeInfo.imageLinks.thumbnail} />
+            : <Skeleton variant="rectangular" width={150} height={230} />}
             </div>
             <Stack spacing={1} sx={{px:4}}>
-            <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content}/>
+            <AddComment handleCommentAdd={handleCommentAdd} setCommentText={setCommentText} content={content} currentUser={currentUser}/>
             <BookMap commentData={commentData} />
             <BookComments commentData={commentData} handleCommentDelete={handleCommentDelete} handlePhotoAdd={handlePhotoAdd} handleFileInput={handleFileInput} handlePhotoToDb={handlePhotoToDb} handleImageDelete={handleImageDelete} photo={photo} previewNumber={previewNumber} currentUser={currentUser}/>
             </Stack>

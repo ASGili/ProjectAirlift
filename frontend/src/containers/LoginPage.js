@@ -15,9 +15,9 @@ const LoginPage = ()=>{
     measurementId: "G-B75RJ3VR7N"
   };
 
+  const [displayName, setDisplayName]= useState("")
   const [email, setEmail] =useState("")
   const [password, setPassword] =useState("")
-  const [displayName, setDisplayName]= useState("")
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -60,28 +60,28 @@ const LoginPage = ()=>{
 
     return(
         <Stack spacing={5} direction={'row'} sx={{mx:"4em", pt:15,height:"80vh"}}>
-          <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
-          <Stack spacing={1} sx={{p:"5vw", width:"30vw"}}>  
-          <h3>Register a new account:</h3> 
-          <label htmlFor="username">Username:</label>
-          <input onChange={(event)=>setDisplayName(event.target.value)} type="text" name="username" id="username"/>
-          <label htmlFor="email">Email:</label>
-          <input onChange={handleEmail} type="text" name="email" id="email"/>
-          <label htmlFor="password">Password:</label>
-          <input onChange={handlePassword} type="password" name="password" id="password"/>
-          <button onClick={handleRegister} type="submit">Register</button>
-          </Stack>
-          </Card>
-          <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
-          <Stack spacing={1} sx={{p:"5vw", width:"30vw"}}>  
-          <h3>Login with an existing account:</h3> 
-          <label htmlFor="email2">Email:</label>
-          <input onChange={handleEmail} type="text" name="email2" id="email2"/>
-          <label htmlFor="password2">Password:</label>
-          <input onChange={handlePassword} type="password2" name="password2" id="password2"/>
-          <button onClick={handleLogin} type="submit">Login</button>
-          </Stack>
-          </Card>  
+            <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+              <Stack spacing={1} sx={{px:"6vw", width:"24vw"}}>  
+              <h3>Register a new account:</h3> 
+              <label htmlFor="username">Username:</label>
+              <input onChange={(event)=>setDisplayName(event.target.value)} type="text" name="username" id="username" />
+              <label htmlFor="email">Email:</label>
+              <input onChange={handleEmail} type="text" name="email" id="email"/>
+              <label htmlFor="password">Password:</label>
+              <input onChange={handlePassword} type="password" name="password" id="password"/>
+              <button onClick={handleRegister} type="submit">Register</button>
+              </Stack>
+            </Card>
+            <Card sx={{height: 475, width:"50vw", bgcolor:"#FAF4B7"}}>
+              <Stack spacing={1} sx={{px:"5vw", width:"24vw"}}>  
+              <h3>Login with an existing account:</h3> 
+              <label htmlFor="email2">Email:</label>
+              <input onChange={handleEmail} type="text" name="email2" id="email2"/>
+              <label htmlFor="password2">Password:</label>
+              <input onChange={handlePassword} type="password" name="password2" id="password2"/>
+              <button onClick={handleLogin} type="submit">Login</button>
+              </Stack>
+            </Card>  
         </Stack>)
 }
 
